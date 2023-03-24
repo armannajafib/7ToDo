@@ -1,0 +1,21 @@
+{
+    "name": "todolist/armannajafib",
+    "description": "simple todolist with php,composer,ajax,...",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Todolist\\Armannajafib\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "armannajafib",
+            "email": "armannajafi81@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^8.3"
+    }
+}
