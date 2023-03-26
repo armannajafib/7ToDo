@@ -1,7 +1,4 @@
-<?php
-print_r($tasks);
-echo "<br>" . rand(20, 200)
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
