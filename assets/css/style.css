@@ -120,6 +120,10 @@ body {
 .main .nav .menu ul {
   padding-left: 0px;
 }
+.main .nav .menu ul li a {
+  text-decoration: none;
+  color: #5f5e5e;
+}
 .main .nav .menu ul li {
   cursor: pointer;
   list-style: none;
@@ -266,4 +270,30 @@ body {
 
 .clear {
   clear: both;
+}
+.newFolderAdd{
+  margin-top: 10px;
+    width: 65%;
+    padding: 1px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+.newFolderBtn{
+  margin-top: 10px;
+  width: 30px;
+  padding: 1px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+}
+a.remove{
+  color: rgb(229, 36, 36) !important;
+  text-decoration: none;
+  float: right;
+  font-weight: 200;
+  padding-right: 8px;
+}
+a.remove:hover{
+  color: red;
+  text-decoration: none;
+  font-weight: 700;
 }

@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-  <title><?= BASE_TITLE?></title>
+  <title><?= BASE_TITLE ?></title>
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
@@ -26,12 +25,13 @@
           </div>
         </div>
         <div class="menu">
-          <div class="title">Navigation</div>
+          <div class="title">folders</div>
           <ul>
-            <li><i class="fa fa-home"></i>Home</li>
-            <li><i class="fa fa-signal"></i>Activity</li>
-            <li class="active"><i class="fa fa-tasks"></i>Manage Tasks</li>
-            <li><i class="fa fa-envelope"></i>Messages</li>
+            <?php foreach ($folders as $folder):?>
+            <li><a href="?folder_id=<?= $folder->id?>"><i class="fa fa-folder"></i><?=$folder->name?><a href="?deleteFolder=<?= $folder->id?>" class="remove">x</a></li></a>
+            <?php endforeach;?>
+              <input type="text" placeholder="Add New Folder" class="newFolderAdd"/>
+              <button class="newFolderBtn">+</button>
           </ul>
         </div>
       </div>
