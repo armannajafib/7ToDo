@@ -9,7 +9,7 @@ body {
   margin: 0px;
   font-family: "Open Sans";
   font-size: 14px;
-  font-smoothing: antialiased;
+  /* font-smoothing: antialiased; */
 }
 
 .page {
@@ -285,15 +285,20 @@ body {
   border-radius: 2px;
   border: 1px solid #ccc;
 }
+.newFolderBtn:hover{
+  cursor: pointer;
+  opacity: 0.7;
+  border-color: black;
+}
 a.remove{
-  color: rgb(229, 36, 36) !important;
+  color: rgb(79, 73, 73);
   text-decoration: none;
   float: right;
   font-weight: 200;
   padding-right: 8px;
 }
 a.remove:hover{
-  color: red;
+  color: red !important;
   text-decoration: none;
   font-weight: 700;
 }

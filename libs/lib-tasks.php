@@ -11,6 +11,18 @@ function getDeleteFolder($deleteFolderId)
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     return $stmt->rowCount();
+    // header("location:http://7learn-arman.php/7todo");
+}
+
+function addFolder($folderName)
+{
+    global $pdo;
+    $userId = getuserId();
+    $sql ="INSERT INTO `folders`(`name`, `user_id`) VALUES (:name,:user_id)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':name'=>$folderName,'user_id'=>$userId]);
+    return $stmt->rowCount();
+    // header("location:http://7learn-arman.php/7todo");
 }
 function getfolder()
 {
