@@ -122,7 +122,7 @@ body {
 }
 .main .nav .menu ul li a {
   text-decoration: none;
-  color: #5f5e5e;
+  color: #5f5e5e ;
 }
 .main .nav .menu ul li {
   cursor: pointer;
@@ -137,7 +137,7 @@ body {
   border-radius: 4px;
   transition: 0.25s all;
 }
-.main .nav .menu ul li.active {
+.main .nav .menu ul li.active a{
   color: #79BC46;
 }
 .main .nav .menu ul li:hover {
@@ -168,6 +168,7 @@ body {
   padding: 0px;
   color: #AAA;
   margin-top: -18px;
+  width: 100%;
 }
 .main .view .viewHeader .functions {
   float: right;
@@ -291,7 +292,7 @@ body {
   border-color: black;
 }
 a.remove{
-  color: rgb(79, 73, 73);
+  color: rgb(79, 73, 73) !important ;
   text-decoration: none;
   float: right;
   font-weight: 200;
@@ -301,4 +302,10 @@ a.remove:hover{
   color: red !important;
   text-decoration: none;
   font-weight: 700;
+} 
+.addNewTask{
+  width: 50%;
+  line-height: 40px;
+  margin-left: 1%;
+  padding-left: 1%;  
 }
