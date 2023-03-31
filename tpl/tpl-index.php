@@ -40,7 +40,7 @@
       </div>
       <div class="view">
         <div class="viewHeader">
-          <div class="title"><input type="text" placeholder="Add New Folder" class="addNewTask"></div>
+          <div class="title"><input type="text" placeholder="Add New Task" class="addNewTask"></div>
           <div class="functions">
             <div class="button active">Add New Task</div>
             <div class="button">Completed</div>
@@ -51,15 +51,20 @@
           <div class="list">
             <div class="title">Today</div>
             <ul>
-              <?php foreach ($tasks as $task) : ?>
-                <li class="<?= $task->is_done ? "checked" : ""; ?>">
-                  <i class="<?= $task->is_done ? "fa fa-check-square-o" : "fa fa-square-o"; ?>"></i><span><?= $task->title; ?></span>
-                  <div class="info">
-                    <span>Create at <?= $task->create_at ?></span>
-                    <a href="?deleteTask=<?= $task->id ?>" onclick="confirm('Are sure to delete <?= $task->title; ?>')" class="remove"><i class="fa fa-trash-o"></i></a>
-                  </div>
-                </li>
-              <?php endforeach; ?>
+              <?php if (sizeof($tasks)) : ?>
+                <?php foreach ($tasks as $task) : ?>
+                  <li class="<?= $task->is_done ? "checked" : ""; ?>">
+                    <i class="<?= $task->is_done ? "fa fa-check-square-o" : "fa fa-square-o"; ?>"></i><span><?= $task->title; ?></span>
+                    <div class="info">
+                      <span>Create at <?= $task->create_at ?></span>
+                      <a href="?deleteTask=<?= $task->id ?>&folder_id=<?= $task->folder_id  ?>" onclick="confirm('Are sure to delete <?= $task->title; ?>')" class="remove"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                  </li>
+                <?php endforeach; ?>
+              <?php else : ?>
+                <li>No Task here...</li>
+              <?php endif; ?>
+
             </ul>
           </div>
         </div>
@@ -89,7 +94,27 @@
             },
           });
         });
-
+        $(".addNewTask").on('keypress', function(e) {
+          if (e.which == 13) {
+            $.ajax({
+              url: "process/ajaxHandler.php",
+              method: "post",
+              data: {
+                action: "addNewTask",
+                Task: $(".addNewTask").val(),
+                folder_id: <?= $_GET['folder_id'] ?? 0; ?>
+              },
+              success: function(response) {
+                if (response==1) {
+                  location.reload();
+                }else{
+                  alert(response);
+                }
+              }
+            });
+          }
+        });
+        $(".addNewTask").focus();
       });
     </script>
 </body>

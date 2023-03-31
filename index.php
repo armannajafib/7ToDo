@@ -4,7 +4,6 @@ include "bootstrap/init.php";
 if (isset($_GET['deleteFolder']) && is_numeric($_GET['deleteFolder'])) {
     $rowCountDelete=getDeleteFolder($_GET['deleteFolder']);
     // echo "$rowCountDelete rows sucessfully deleted!";
-    header("location:http://7learn-arman.php/7todo");
 }
 if (isset($_GET['deleteTask']) && is_numeric($_GET['deleteTask'])) {
     $rowCountDelete=getDeleteTask($_GET['deleteTask']);

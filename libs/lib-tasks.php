@@ -22,7 +22,6 @@ function getDeleteTask($deleteTaskId)
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     return $stmt->rowCount();
-    // header("location:http://7learn-arman.php/7todo");
 }
 
 function addFolder($folderName)
@@ -31,7 +30,17 @@ function addFolder($folderName)
     $userId = getuserId();
     $sql = "INSERT INTO `folders`(`name`, `user_id`) VALUES (:name,:user_id)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([':name' => $folderName, 'user_id' => $userId]);
+    $stmt->execute([':name' => $folderName, ':user_id' => $userId]);
+    return $stmt->rowCount();
+    // header("location:http://7learn-arman.php/7todo");
+}
+function addTask($Task,$folderId)
+{
+    global $pdo;
+    $userId = getuserId();
+    $sql = "INSERT INTO `tasks`(`title`, `user_id`, `folder_id`) VALUES (:Task,:user_id,:folder_id)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':Task' => $Task, ':user_id' => $userId, ':folder_id'=>$folderId]);
     return $stmt->rowCount();
     // header("location:http://7learn-arman.php/7todo");
 }

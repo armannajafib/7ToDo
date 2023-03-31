@@ -1,25 +1,27 @@
 <?php
-// print_r($_POST['foldername']);
-//action=addNewFolder
-//folderName=input.val()
 include_once "../bootstrap/init.php";
 if (!is_request_ajax()) {
     diepage("Request is Invalid!");
 }
-if (!isset($_POST['foldername']) || empty($_POST['foldername'])) {
-    diepage("درخواست خالی ارسال نمیشود!!");
+if (!isset($_POST['action']) || empty($_POST['action'])) {
+    diepage("Invalid Action");
 }
 
 switch ($_POST['action']) {
     case 'addNewFolder':
-        if (strlen($_POST['foldername']) <= 2) {
+        if (!isset($_POST['foldername']) || strlen($_POST['foldername']) <= 2) {
             diepage("نام فولدر باید بیشتر از 2 حرف باشد");
         } else {
             echo addFolder($_POST['foldername']);
         }
         break;
         case 'addNewTask':
-            # code...
+            if (!isset($_POST['Task']) || strlen($_POST['Task']) <= 2) {
+                diepage("عنوان تسک باید بیشتر از 2 حرف باشد");
+            } else {
+                echo addTask($_POST['Task'],$_POST['folder_id']);  
+            }
+      
             break;
 
     default:
