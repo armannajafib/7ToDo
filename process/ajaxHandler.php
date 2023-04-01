@@ -15,14 +15,18 @@ switch ($_POST['action']) {
             echo addFolder($_POST['foldername']);
         }
         break;
-        case 'addNewTask':
-            if (!isset($_POST['Task']) || strlen($_POST['Task']) <= 2) {
-                diepage("عنوان تسک باید بیشتر از 2 حرف باشد");
+    case 'addNewTask':
+        if (!isset($_POST['Task']) || strlen($_POST['Task']) <= 2) {
+            diepage("عنوان تسک باید بیشتر از 2 حرف باشد");
+        } else {
+            if ($_POST['folder_id'] == 0) {
+                die("فولدر مورد نظر را انتخاب کنید");
             } else {
-                echo addTask($_POST['Task'],$_POST['folder_id']);  
+                echo addTask($_POST['Task'], $_POST['folder_id']);
             }
-      
-            break;
+        }
+
+        break;
 
     default:
         diepage("Request is Invalid!");
