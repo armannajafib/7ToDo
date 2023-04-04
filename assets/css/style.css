@@ -309,3 +309,6 @@ a.remove:hover{
   margin-left: 1%;
   padding-left: 1%;  
 }
+.check:hover{
+  color: rgb(96, 79, 32);
+}

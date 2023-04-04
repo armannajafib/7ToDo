@@ -69,3 +69,15 @@ function gettask()
     $records = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $records;
 }
+
+function toggleTask($taskId)
+{
+    global $pdo;
+    $userId = getuserId();
+    $sql = "update `tasks` set is_done = 1 - is_done  where user_id =:userId and id =:taskId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':userId'=>$userId,':taskId'=>$taskId]);
+    $records = $stmt->rowCount();
+    return $records;
+}
+

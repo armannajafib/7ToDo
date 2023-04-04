@@ -27,7 +27,7 @@
         <div class="menu">
           <div class="title">folders</div>
           <ul class="folder-list">
-            <li class="<?= !isset($_GET['folder_id']) ? 'active' : '' ?>"><a href="http://7learn-arman.php/7todo/"><i class="fa fa-folder"></i>All</a></li>
+            <li class="<?= !isset($_GET['folder_id']) ? 'active' : '' ?>"><a href="<?= site_url(); ?>"><i class="fa fa-folder"></i>All</a></li>
             <?php foreach ($folders as $folder) : ?>
               <li class="<?= isset($_GET['folder_id']) && $_GET['folder_id'] == $folder->id ? 'active ' : ''; ?>"><a href="?folder_id=<?= $folder->id ?>"><i class="fa fa-folder"></i><?= $folder->name ?><a href="?deleteFolder=<?= $folder->id ?>" class="remove"><i class="fa fa-trash-o"></i></a></li>
             <?php endforeach; ?>
@@ -54,7 +54,7 @@
               <?php if (sizeof($tasks)) : ?>
                 <?php foreach ($tasks as $task) : ?>
                   <li class="<?= $task->is_done ? "checked" : ""; ?>">
-                    <i class="<?= $task->is_done ? "fa fa-check-square-o" : "fa fa-square-o"; ?>"></i><span><?= $task->title; ?></span>
+                    <i data-taskId="<?= $task->id; ?>" class="check <?= $task->is_done ? "fa fa-check-square-o" : "fa fa-square-o"; ?>"></i><span><?= $task->title; ?></span>
                     <div class="info">
                       <span>Create at <?= $task->create_at ?></span>
                       <a href="?deleteTask=<?= $task->id ?>&folder_id=<?= $task->folder_id  ?>" onclick="confirm('Are sure to delete <?= $task->title; ?>')" class="remove"><i class="fa fa-trash-o"></i></a>
@@ -75,6 +75,27 @@
     <script src="assets/js/script.js"></script>
     <script>
       $(document).ready(function(e) {
+        $(".check").click(function(e) {
+          var tid = $(this).attr("data-taskId");
+          $.ajax({
+            url: "process/ajaxHandler.php",
+            method: "post",
+            data: {
+              action: "statusToggle",
+              taskId: tid,
+
+            },
+            success: function(response) {
+              if (response == 1) {
+                location.reload();
+              } else {
+                alert(response);
+              }
+            },
+          });
+        });
+
+
         var input = $(".newFolderAdd");
         $(".newFolderBtn").click(function() {
           $.ajax({
@@ -105,16 +126,17 @@
                 folder_id: <?= $_GET['folder_id'] ?? 0; ?>
               },
               success: function(response) {
-                if (response==1) {
+                if (response == 1) {
                   location.reload();
-                }else{
+                } else {
                   alert(response);
                 }
               }
             });
-          }   
+          }
         });
         $(".addNewTask").focus();
+
       });
     </script>
 </body>

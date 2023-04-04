@@ -28,6 +28,14 @@ switch ($_POST['action']) {
 
         break;
 
+    case 'statusToggle':
+        if (!isset($_POST['taskId']) || !is_numeric($_POST['taskId'])) {
+
+            die("آیدی تسک معتبر نیست!!");
+        }else {
+            echo  toggleTask($_POST['taskId']);
+        }
+        break;
     default:
         diepage("Request is Invalid!");
         break;
