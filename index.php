@@ -1,6 +1,8 @@
 <?php
 include "bootstrap/init.php";
-// $tasks=[1,2,3,4,5];
+if(!is_Logged()){
+    header("location:". BASE_URL . "auth.php");
+}
 if (isset($_GET['deleteFolder']) && is_numeric($_GET['deleteFolder'])) {
     $rowCountDelete=getDeleteFolder($_GET['deleteFolder']);
     // echo "$rowCountDelete rows sucessfully deleted!";

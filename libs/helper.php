@@ -10,7 +10,7 @@ function is_request_ajax(){
 }
 
 function site_url($uri = ""){
-    echo BASE_URL . $uri;
+    return BASE_URL . $uri;
 }
 
 function diepage($msg){
@@ -22,3 +22,23 @@ function dd($var){
     var_dump($var);
     echo "</pre>";
 }
+function Message($msg,$class="info"){
+    echo "<div class='$class' style='background-color: #eda4a4; margin: 50px auto; padding: 30px; border: 1px solid #641111; border-radius: 5px;'>$msg</div>";
+}
+
+//  function validateUsername() {
+// if (preg_match('/^\w{5,}$/', $username)) {
+//     # code...
+// }
+//  }
+//  function validatePassword() {
+
+//  }
+//  function validateEmail() {
+
+// }
+
+
+// function validation(){
+
+// }

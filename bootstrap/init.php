@@ -10,3 +10,4 @@ try {
     diepage($e->getMessage());
 }
 include BASE_PATH."libs/lib-tasks.php";
+include BASE_PATH."libs/lib-auth.php";
