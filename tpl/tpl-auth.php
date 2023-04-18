@@ -79,12 +79,12 @@
 					<div class="sign-in-htm">
 						<form action="<?= site_url("auth.php?action=login") ?>" method="post">
 							<div class="group">
-								<label for="user" class="label">Username</label>
-								<input id="user" type="text" class="input">
+								<label for="user" class="label">Email</label>
+								<input id="user" type="email" class="input" name="logEmail">
 							</div>
 							<div class="group">
 								<label for="pass" class="label">Password</label>
-								<input id="pass" type="password" class="input" data-type="password">
+								<input id="pass" type="password" class="input" data-type="password" name="logPassword">
 							</div>
 							<div class="group">
 								<input id="check" type="checkbox" class="check" checked>

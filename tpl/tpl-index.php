@@ -13,7 +13,7 @@
     <div class="pageHeader">
       <div class="title">Dashboard</div>
       <div class="userPanel">
-        <i class="fa fa-chevron-down"></i><span class="username">John Doe </span><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/73.jpg" width="40" height="40" />
+        <a href="?logout=1"><i class="fa fa-sign-out"></i></a><span class="username"><?= getUser()->name; ?></span><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/73.jpg" width="40" height="40" />
       </div>
     </div>
     <div class="main">

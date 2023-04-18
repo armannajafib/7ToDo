@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "constans.php";
 include BASE_PATH."bootstrap/config.php";
 include BASE_PATH."libs/helper.php";

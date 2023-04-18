@@ -2,8 +2,8 @@
 defined('BASE_PATH') or die('permision denied');
 function getuserId()
 {
-    return 1;
-};
+   return $_SESSION['login']->id;
+}
 function getDeleteFolder($deleteFolderId)
 {
     global $pdo;
